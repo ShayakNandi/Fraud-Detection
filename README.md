@@ -1,3 +1,47 @@
+The system examines each **outgoing payment when it is initiated** and estimates whether it is legitimate, an authorized scam, or an account takeover.
+
+1. **Build a snapshot of the payment and its history.** Features include the amount, recipient age, payment channel, unusual spending patterns, recent password resets, profile changes, and previous transactions. Historical summaries cover the previous 24 hours, seven days, and all available history.
+
+2. **Learn from labeled examples.** The member-key CSV identifies fraudulent payment IDs and their scam categories. XGBoost learns patterns that distinguish the three classes. Payments belonging to the same member stay together when splitting the data.
+
+3. **Score a new payment.** The model outputs three scores: legitimate, authorized scam, and account takeover. Adding the two fraud scores gives the overall fraud score.
+
+4. **Flag payments for review.** A payment is flagged when its fraud score reaches the selected threshold, **0.82** in this run. The software produces scores and review flags; it does not stop transactions.
+
+Features exclude future events, case/recovery records, and outcome labels. Training and prediction use the same feature-building code.
+
+**Testing conditions**
+
+The dataset contains **118 synthetic members and 764 outgoing payment initiations**.
+
+| Split | Members | Payments |
+|---|---:|---:|
+| Training | 75 | 451 |
+| Validation | 19 | 132 |
+| Held-out testing | 24 | 181 |
+
+The split used seed 42, with no members shared across groups. Validation data selected the number of boosting rounds and the review threshold. The final model used **133 boosting rounds**, without refitting on validation data.
+
+**Held-out results**
+
+There are two decision rules: selecting the most likely of three classes, and flagging fraud using the combined score.
+
+| Metric | Fraud review flag at 0.82 | Three-class prediction |
+|---|---:|---:|
+| **Precision** | **91.67%** | **90.18% macro average** |
+| **Accuracy** | **93.92%** | **95.58%** |
+| **Recall** | **70.97%** | **93.78% macro average** |
+
+For the **fraud review flag**:
+
+- **Precision:** 22 of the 24 flagged payments were fraudulent.
+- **Recall:** It detected 22 of 31 fraudulent payments, missing nine.
+- **Accuracy:** It correctly handled 170 of 181 payments, including 148 legitimate payments correctly left unflagged.
+
+It also detected the **first scam payment for 8 of 10 affected test members** and falsely flagged **none of 36 legitimate-lookalike payments**.
+
+These results describe a small synthetic benchmark. Repeated scenario patterns and the small number of fraud cases limit how confidently they predict performance on real banking activity.
+
 # Event-driven fraud detection
 
 Rebuilt on October 27, 2026 from the implementation in this conversation after
