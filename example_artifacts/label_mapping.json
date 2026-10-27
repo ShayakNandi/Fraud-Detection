@@ -1,0 +1,5 @@
+{
+  "Legitimate": 0,
+  "Authorized Scam": 1,
+  "Account Takeover": 2
+}

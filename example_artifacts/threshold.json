@@ -1,0 +1,5 @@
+{
+  "fraud_threshold": 0.82,
+  "method": "f1",
+  "source": "validation"
+}

@@ -1,0 +1,56 @@
+{
+  "feature_config": {
+    "short_hours": 24,
+    "long_days": 7,
+    "include_interventions": true
+  },
+  "class_names": [
+    "Legitimate",
+    "Authorized Scam",
+    "Account Takeover"
+  ],
+  "best_boosting_rounds": 133,
+  "refit": false,
+  "arguments": {
+    "events": "data/events.csv",
+    "members": "data/members.csv",
+    "output_dir": "example_artifacts",
+    "seed": 42,
+    "test_size": 0.2,
+    "validation_size": 0.2,
+    "n_estimators": 1000,
+    "early_stopping_rounds": 50,
+    "max_depth": 3,
+    "learning_rate": 0.05,
+    "min_child_weight": 3,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "reg_lambda": 1.0,
+    "reg_alpha": 0.0,
+    "gamma": 0.0,
+    "n_jobs": 2,
+    "class_weight": "balanced",
+    "short_hours": 24,
+    "long_days": 7,
+    "no_interventions": false,
+    "threshold_method": "f1",
+    "minimum_precision": 0.7,
+    "threshold": null,
+    "refit": false,
+    "export_features": true
+  },
+  "versions": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scikit-learn": "1.7.2",
+    "xgboost": "3.0.5",
+    "joblib": "1.5.3"
+  },
+  "input_sha256": {
+    "events": "1ccd67363d7f539811263744f096fec6f3a18bd38ec570e597797f789165b90a",
+    "members": "37ca98c98565be45f09729428591afd59e213bb99c923b3e709c81f0d69255ee"
+  },
+  "prediction_point": "Outgoing Payment Initiated",
+  "probabilities_calibrated": false
+}

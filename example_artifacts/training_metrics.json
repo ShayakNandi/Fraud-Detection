@@ -1,0 +1,175 @@
+{
+  "validation_before_optional_refit": {
+    "payment_count": 132,
+    "member_count": 19,
+    "class_counts": {
+      "Legitimate": 107,
+      "Authorized Scam": 21,
+      "Account Takeover": 4
+    },
+    "multiclass_report": {
+      "Legitimate": {
+        "precision": 1.0,
+        "recall": 0.9626168224299065,
+        "f1-score": 0.9809523809523809,
+        "support": 107.0
+      },
+      "Authorized Scam": {
+        "precision": 0.875,
+        "recall": 1.0,
+        "f1-score": 0.9333333333333333,
+        "support": 21.0
+      },
+      "Account Takeover": {
+        "precision": 0.8,
+        "recall": 1.0,
+        "f1-score": 0.8888888888888888,
+        "support": 4.0
+      },
+      "accuracy": 0.9696969696969697,
+      "macro avg": {
+        "precision": 0.8916666666666666,
+        "recall": 0.9875389408099688,
+        "f1-score": 0.9343915343915343,
+        "support": 132.0
+      },
+      "weighted avg": {
+        "precision": 0.9740530303030303,
+        "recall": 0.9696969696969697,
+        "f1-score": 0.9705868205868206,
+        "support": 132.0
+      }
+    },
+    "confusion_matrix_true_rows_predicted_columns": [
+      [
+        103,
+        3,
+        1
+      ],
+      [
+        0,
+        21,
+        0
+      ],
+      [
+        0,
+        0,
+        4
+      ]
+    ],
+    "macro_ovr_roc_auc": 0.9965210604462941,
+    "multiclass_log_loss": 0.09132635898145883,
+    "binary_fraud": {
+      "threshold": 0.82,
+      "precision": 0.9259259259259259,
+      "recall": 1.0,
+      "f1": 0.9615384615384616,
+      "roc_auc": 0.9951401869158878,
+      "average_precision": 0.9773763515237199,
+      "false_positive_rate": 0.018691588785046728,
+      "true_positive": 25,
+      "false_positive": 2,
+      "true_negative": 105,
+      "false_negative": 0
+    },
+    "legitimate_lookalikes": {
+      "payment_count": 17,
+      "incorrectly_flagged": 1,
+      "false_positive_rate": 0.058823529411764705
+    },
+    "first_scam_payment": {
+      "member_count": 8,
+      "detected": 8,
+      "recall": 1.0
+    }
+  },
+  "test": {
+    "payment_count": 181,
+    "member_count": 24,
+    "class_counts": {
+      "Legitimate": 150,
+      "Authorized Scam": 25,
+      "Account Takeover": 6
+    },
+    "multiclass_report": {
+      "Legitimate": {
+        "precision": 0.9733333333333334,
+        "recall": 0.9733333333333334,
+        "f1-score": 0.9733333333333334,
+        "support": 150.0
+      },
+      "Authorized Scam": {
+        "precision": 0.875,
+        "recall": 0.84,
+        "f1-score": 0.8571428571428571,
+        "support": 25.0
+      },
+      "Account Takeover": {
+        "precision": 0.8571428571428571,
+        "recall": 1.0,
+        "f1-score": 0.9230769230769231,
+        "support": 6.0
+      },
+      "accuracy": 0.9558011049723757,
+      "macro avg": {
+        "precision": 0.9018253968253968,
+        "recall": 0.9377777777777778,
+        "f1-score": 0.9178510378510379,
+        "support": 181.0
+      },
+      "weighted avg": {
+        "precision": 0.9558997632202052,
+        "recall": 0.9558011049723757,
+        "f1-score": 0.9556189666686904,
+        "support": 181.0
+      }
+    },
+    "confusion_matrix_true_rows_predicted_columns": [
+      [
+        146,
+        3,
+        1
+      ],
+      [
+        4,
+        21,
+        0
+      ],
+      [
+        0,
+        0,
+        6
+      ]
+    ],
+    "macro_ovr_roc_auc": 0.9938682106424043,
+    "multiclass_log_loss": 0.11168252214843338,
+    "binary_fraud": {
+      "threshold": 0.82,
+      "precision": 0.9166666666666666,
+      "recall": 0.7096774193548387,
+      "f1": 0.8,
+      "roc_auc": 0.9903225806451612,
+      "average_precision": 0.9558336727503184,
+      "false_positive_rate": 0.013333333333333334,
+      "true_positive": 22,
+      "false_positive": 2,
+      "true_negative": 148,
+      "false_negative": 9
+    },
+    "legitimate_lookalikes": {
+      "payment_count": 36,
+      "incorrectly_flagged": 0,
+      "false_positive_rate": 0.0
+    },
+    "first_scam_payment": {
+      "member_count": 10,
+      "detected": 8,
+      "recall": 0.8
+    },
+    "majority_class_baseline": {
+      "class": "Legitimate",
+      "accuracy": 0.8287292817679558,
+      "macro_f1": 0.3021148036253776
+    }
+  }
+}
